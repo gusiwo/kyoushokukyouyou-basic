@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>教職教養BASIC</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Dosis:300,400,500,600,700">
+    <link rel="stylesheet" href="../../stylesheet.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <!-- ヘッダー -->
+    <header>
+      <div class="container">
+        <div class="header-title">
+          <a href="../../index.html"><div class="header-logo">教職教養BASIC</div></a>
+        </div>
+        <div class="header-menu">
+          <ul class="header-menu-right">
+            <li>
+              <a href="#" class="signup-show">新規登録</a>
+            </li>
+            <li><a id="login-show" href="#">ログイン</a>
+            </li>
+
+
+            <li>
+              <a href="#stamps">教員採用試験</a>
+            </li>
+
+            <li>
+              <a href="#contact">お問い合わせ</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+  </header>
+
+<!--ログインモーダル-->
+    <div class="login-modal-wrapper" id="login-modal">
+           <div class="modal1">
+             <div class="close-modal">
+               <i class="fa fa-2x fa-times"></i>
+             </div>
+           <div id="login-form">
+            <h2>Emailログイン</h2>
+            <form action="#">
+              <input class="form-control" type="text" placeholder="メールアドレス">
+              <input class="form-control" type="password" placeholder="パスワード">
+              <div id="submit-btn">ログイン</div>
+            </form>
+           </div>
+           </div>
+        </div>
+
+        <div class="signup-modal-wrapper" id="signup-modal">
+            <div class="modal1">
+              <div class="close-modal">
+                <i class="fa fa-2x fa-times"></i>
+              </div>
+            <div id="signup-form">
+              <h2>Emailで新規登録</h2>
+              <form action="#">
+                <input class="form-control" type="text" placeholder="メールアドレス">
+                <input class="form-control" type="password" placeholder="パスワード">
+                <div id="submit-btn">新規登録</div>
+              </form>
+            </div>
+          </div>
+          </div>
+<!-- トップ部分 -->
+    <div class="top-section gray-section">
+      <div class="top-inner">
+        <div class="container">
+          <div class="top-description">
+            <h2>教育原理</h2>
+            <p>知ってたらすごい！！少し難しい教育・学習方法</p>
+            <p>教育・学習方法の理論2</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<!---クイズ--->
+
+<div id="app" class="row">
+    <!-- クイズを表示する部分 -->
+    <div class="offset-3 col-6" v-if="!completed">
+        <div class="card">
+            <div class="card-body">
+                <p class="badge badge-dark">第 {{ (questionIndex+1) }} 問</p>
+                <br>
+                <h4 class="card-title">{{ currentQuestion.question }}</h4>
+                <hr>
+                <button
+                    type="button"
+                    class="btn btn-primary btn-lg btn-block text-left"
+                    v-for="(answer,index) in currentQuestion.answers"
+                    @click="addAnswer(index)">{{ (index+1) }}. {{ answer }}</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 結果表示する部分 -->
+    <div class="offset-3 col-6" v-if="completed">
+        <div class="card">
+            <div class="card-body">
+                <p class="badge badge-dark">結果</p>
+                <div v-for="(question,index) in this.questions">
+                    <h4 class="card-title">{{ question.question }}</h4>
+                    <ul>
+                        <li v-for="answer in question.answers">{{ answer }}</li>
+                    </ul>
+                    <span class="correct" v-if="question.answer == answers[index]">正解です！！ ⭕️（{{ question.answers[question.answer] }}）</span>
+                    <span class="incorrect" v-else>不正解 ❌<br>正解は「{{ question.answers[question.answer] }}」でした。</span>
+                    <h5>＜解説等＞</h5>
+                    <h5 class="explanation">{{question.explanation}}</h5>
+                    <h5 class="explanation2">{{question.explanation2}}</h5>
+                    <hr>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.min.js"></script>
+<script>
+
+    new Vue({
+        el: '#app',
+        data: {
+            answers: [],
+            questionIndex: 0,
+            questions: [
+                {
+                    question: '(問1)子供が自主的に「目的ー計画ー遂行ー判断・評価」を経る教授法は？',
+                    answers: [
+                        'プロジェクトメソッド',
+                        'ヘルバルとの四段階教授法',
+                        'ツィラーの五段階教授法',
+                        'わからない',
+                    ],
+                    answer: 0,
+                    explanation: 'キルパトリックが考案した経験主義の教授法です。',
+                    explanation2: ''
+                },
+                {
+                    question: '(問2)子供と教師をグループに分け、複数の教師が指導する教育方法は？',
+                    answers: [
+                        'ティーム・ティーチング',
+                        '助教法',
+                        'ピア学習',
+                        'わからない',
+                    ],
+                    answer: 0,
+                    explanation: 'ケッペルによって考案されました。子供の実態に応じた指導が可能になります。',
+                    explanation2: ''
+                },
+                {
+                    question: '(問3)学年別学級編成を廃止したことに特徴があるイエナ・プランが生まれたのは？',
+                    answers: [
+                        'ドイツ',
+                        'オランダ',
+                        'アメリカ',
+                        'わからない',
+                    ],
+                    answer: 0,
+                    explanation: 'オランダで普及しているイエナ・プランですが生まれはドイツのイエナ大学です。'
+                },
+                {
+                    question: '(問4)『教育の過程』で発見学習を提唱したのは？',
+                    answers: [
+                        'スキナー',
+                        'ブルーム',
+                        'ブルーナー',
+                        'わからない',
+                    ],
+                    answer: 2,
+                    explanation: '科学上の発見と同様の過程を子供に経験させる学習法です。'
+                },
+                {
+                    question: '(問5)⚠️ブルームの完全習得学習で用いられないのは？',
+                    answers: [
+                        '教育目標',
+                        '教育方法',
+                        '評価方法',
+                    ],
+                    answer: 1,
+                    explanation: '教育目標を３領域に分類し適切な評価方法を用いることで90％以上の子供に内容を取得させる。'
+                }
+            ]
+        },
+        methods: {
+            addAnswer: function(index) {
+
+                this.answers.push(index);
+
+                if(!this.completed) {
+
+                    this.questionIndex++;
+
+
+                }
+              }
+
+
+
+
+
+
+
+
+
+        },
+        computed: {
+            currentQuestion: function() {
+
+                return this.questions[this.questionIndex];
+
+            },
+            completed: function() {
+
+                return (this.questions.length == this.answers.length);
+
+            }
+        }
+    })
+
+</script>
+
+<!---クイズ--->
+
+
+
+
+    <footer>
+      <div class="container">
+        <h2 class="footer-logo">教職教養BASIC</h2>
+        <div class="follow-us">
+
+          <a href="https://twitter.com/Th2lwbFLVrm6LdZ" class="social-icon" target='_blank'>
+            <span class="fa fa-twitter"></span>
+          </a>
+        </div>
+        <div class="copyright">©2019-
+          Kyouikugakubusei
+        </div>
+      </div>
+    </footer>
+
+    <script type="text/javascript" src="../../script.js"></script>
+  </body>
+</html>
