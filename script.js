@@ -17,3 +17,4 @@ $(function() {
 $('#top-btn').click(function(){
     $('html, body').scrollTop(0);
   })
+});
