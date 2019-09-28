@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>教職教養BASIC</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Dosis:300,400,500,600,700">
+    <link rel="stylesheet" href="../../stylesheet.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <!-- ヘッダー -->
+    <header>
+      <div class="container">
+        <div class="header-title">
+          <a href="../../index.html"><div class="header-logo">教職教養BASIC</div></a>
+        </div>
+        <div class="header-menu">
+          <ul class="header-menu-right">
+            <li>
+              <a href="#" class="signup-show">新規登録</a>
+            </li>
+            <li><a id="login-show" href="#">ログイン</a>
+            </li>
+
+
+            <li>
+              <a href="#stamps">教員採用試験</a>
+            </li>
+
+            <li>
+              <a href="#contact">お問い合わせ</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+  </header>
+
+<!--ログインモーダル-->
+    <div class="login-modal-wrapper" id="login-modal">
+           <div class="modal1">
+             <div class="close-modal">
+               <i class="fa fa-2x fa-times"></i>
+             </div>
+           <div id="login-form">
+            <h2>Emailログイン</h2>
+            <form action="#">
+              <input class="form-control" type="text" placeholder="メールアドレス">
+              <input class="form-control" type="password" placeholder="パスワード">
+              <div id="submit-btn">ログイン</div>
+            </form>
+           </div>
+           </div>
+        </div>
+
+        <div class="signup-modal-wrapper" id="signup-modal">
+            <div class="modal1">
+              <div class="close-modal">
+                <i class="fa fa-2x fa-times"></i>
+              </div>
+            <div id="signup-form">
+              <h2>Emailで新規登録</h2>
+              <form action="#">
+                <input class="form-control" type="text" placeholder="メールアドレス">
+                <input class="form-control" type="password" placeholder="パスワード">
+                <div id="submit-btn">新規登録</div>
+              </form>
+            </div>
+          </div>
+          </div>
+<!-- トップ部分 -->
+    <div class="top-section gray-section">
+      <div class="top-inner">
+        <div class="container">
+          <div class="top-description">
+            <h2>教育原理</h2>
+            <p>「〇〇・プラン」って全部説明できる？</p>
+            <p>教育方法・学習方法の理論１</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<!---クイズ--->
+
+<div id="app" class="row">
+    <!-- クイズを表示する部分 -->
+    <div class="offset-3 col-6" v-if="!completed">
+        <div class="card">
+            <div class="card-body">
+                <p class="badge badge-dark">第 {{ (questionIndex+1) }} 問</p>
+                <br>
+                <h4 class="card-title">{{ currentQuestion.question }}</h4>
+                <hr>
+                <button
+                    type="button"
+                    class="btn btn-primary btn-lg btn-block text-left"
+                    v-for="(answer,index) in currentQuestion.answers"
+                    @click="addAnswer(index)">{{ (index+1) }}. {{ answer }}</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 結果表示する部分 -->
+    <div class="offset-3 col-6" v-if="completed">
+        <div class="card">
+            <div class="card-body">
+                <p class="badge badge-dark">結果</p>
+                <div v-for="(question,index) in this.questions">
+                    <h4 class="card-title">{{ question.question }}</h4>
+                    <ul>
+                        <li v-for="answer in question.answers">{{ answer }}</li>
+                    </ul>
+                    <span class="correct" v-if="question.answer == answers[index]">正解です！！ ⭕️（{{ question.answers[question.answer] }}）</span>
+                    <span class="incorrect" v-else>不正解 ❌<br>正解は「{{ question.answers[question.answer] }}」でした。</span>
+                    <h5>＜解説等＞</h5>
+                    <h5 class="explanation">{{question.explanation}}</h5>
+                    <h5 class="explanation2">{{question.explanation2}}</h5>
+                    <hr>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.min.js"></script>
+<script>
+
+    new Vue({
+        el: '#app',
+        data: {
+            answers: [],
+            questionIndex: 0,
+            questions: [
+                {
+                    question: '(問1)	共通基本科目で個別指導、副教科で集団指導をしたのは？',
+                    answers: [
+                        'ウィネトカ・プラン',
+                        'ドルトン・プラン',
+                        'イエナ・プラン',
+                        'わからない',
+                    ],
+                    answer: 0,
+                    explanation: '1919年、アメリカのウォッシュバーンが提唱し、教育課程を教科によって個別学習と集団指導とに分けました。',
+                    explanation2: ''
+                },
+                {
+                    question: '(問2)ドルトン・プランの特徴は？',
+                    answers: [
+                        '自分で時間割を作り先生と契約',
+                        'モニターと呼ばれる子供がいる',
+                        '教科を5つの型に分けた',
+                        'わからない',
+                    ],
+                    answer: 0,
+                    explanation: 'アメリカのパーカーストが実施、カードとポイントによって先生が子供の学習進度を把握できます。２はモニトリアル・システム、３はモリソン・プランの特徴です。',
+                    explanation2: ''
+                },
+                {
+                    question: '(問3)(3)	イエナ・プランの特徴は？',
+                    answers: [
+                        'ウォッシュバーンが実施',
+                        '学習割当表(アサインメント)を用いる',
+                        '学年別(年齢別)学級編成の廃止',
+                        'わからない',
+                    ],
+                    answer: 2,
+                    explanation: ''
+                },
+                {
+                    question: '(問4)(4)	モリソン・プランで提唱された最後に「発表」する五段階教授法は特にどんな教科に取り入れられる？',
+                    answers: [
+                        '科学型',
+                        '鑑賞型',
+                        '言語型',
+                        'わからない',
+                    ],
+                    answer: 0,
+                    explanation: '科学型では「探求―提示―類化―組織化―発表」の五段階の教授法が用いられます。'
+                },
+                {
+                    question: '(問5)以上の４つの教育プランのうち、大正時代に澤柳政太郎が成城小学校(東京)に導入した教育プランは？',
+                    answers: [
+                        'ウィネトカ・プラン',
+                        'ドルトン・プラン',
+                        'イエナ・プラン',
+                        'わからない',
+                    ],
+                    answer: 1,
+                    explanation: '日本では1921年に紹介され、澤柳政太郎の成城小学校や赤井米吉の明星学園などで実施された。'
+                }
+            ]
+        },
+        methods: {
+            addAnswer: function(index) {
+
+                this.answers.push(index);
+
+                if(!this.completed) {
+
+                    this.questionIndex++;
+
+
+                }
+              }
+
+
+
+
+
+
+
+
+
+        },
+        computed: {
+            currentQuestion: function() {
+
+                return this.questions[this.questionIndex];
+
+            },
+            completed: function() {
+
+                return (this.questions.length == this.answers.length);
+
+            }
+        }
+    })
+
+</script>
+
+<!---クイズ--->
+
+
+
+
+    <footer>
+      <div class="container">
+        <h2 class="footer-logo">教職教養BASIC</h2>
+        <div class="follow-us">
+
+          <a href="https://twitter.com/Th2lwbFLVrm6LdZ" class="social-icon" target='_blank'>
+            <span class="fa fa-twitter"></span>
+          </a>
+        </div>
+        <div class="copyright">©2019-
+          Kyouikugakubusei
+        </div>
+      </div>
+    </footer>
+
+    <script type="text/javascript" src="../../script.js"></script>
+  </body>
+</html>
