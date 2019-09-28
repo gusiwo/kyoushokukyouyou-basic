@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>教職教養BASIC</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Dosis:300,400,500,600,700">
+    <link rel="stylesheet" href="../../stylesheet.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <!-- ヘッダー -->
+    <header>
+      <div class="container">
+        <div class="header-title">
+          <a href="../../index.html"><div class="header-logo">教職教養BASIC</div></a>
+        </div>
+        <div class="header-menu">
+          <ul class="header-menu-right">
+            <li>
+              <a href="#" class="signup-show">新規登録</a>
+            </li>
+            <li><a id="login-show" href="#">ログイン</a>
+            </li>
+
+
+            <li>
+              <a href="#stamps">教員採用試験</a>
+            </li>
+
+            <li>
+              <a href="#contact">お問い合わせ</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+  </header>
+
+<!--ログインモーダル-->
+    <div class="login-modal-wrapper" id="login-modal">
+           <div class="modal1">
+             <div class="close-modal">
+               <i class="fa fa-2x fa-times"></i>
+             </div>
+           <div id="login-form">
+            <h2>Emailログイン</h2>
+            <form action="#">
+              <input class="form-control" type="text" placeholder="メールアドレス">
+              <input class="form-control" type="password" placeholder="パスワード">
+              <div id="submit-btn">ログイン</div>
+            </form>
+           </div>
+           </div>
+        </div>
+
+        <div class="signup-modal-wrapper" id="signup-modal">
+            <div class="modal1">
+              <div class="close-modal">
+                <i class="fa fa-2x fa-times"></i>
+              </div>
+            <div id="signup-form">
+              <h2>Emailで新規登録</h2>
+              <form action="#">
+                <input class="form-control" type="text" placeholder="メールアドレス">
+                <input class="form-control" type="password" placeholder="パスワード">
+                <div id="submit-btn">新規登録</div>
+              </form>
+            </div>
+          </div>
+          </div>
+<!-- トップ部分 -->
+    <div class="top-section gray-section">
+      <div class="top-inner">
+        <div class="container">
+          <div class="top-description">
+            <h2>教育原理</h2>
+            <p>一度は聞いたことある？有名な5つの教育・学習方法の理論</p>
+            <p>教育方法・学習方法の理論１</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<!---クイズ--->
+
+<div id="app" class="row">
+    <!-- クイズを表示する部分 -->
+    <div class="offset-3 col-6" v-if="!completed">
+        <div class="card">
+            <div class="card-body">
+                <p class="badge badge-dark">第 {{ (questionIndex+1) }} 問</p>
+                <br>
+                <h4 class="card-title">{{ currentQuestion.question }}</h4>
+                <hr>
+                <button
+                    type="button"
+                    class="btn btn-primary btn-lg btn-block text-left"
+                    v-for="(answer,index) in currentQuestion.answers"
+                    @click="addAnswer(index)">{{ (index+1) }}. {{ answer }}</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 結果表示する部分 -->
+    <div class="offset-3 col-6" v-if="completed">
+        <div class="card">
+            <div class="card-body">
+                <p class="badge badge-dark">結果</p>
+                <div v-for="(question,index) in this.questions">
+                    <h4 class="card-title">{{ question.question }}</h4>
+                    <ul>
+                        <li v-for="answer in question.answers">{{ answer }}</li>
+                    </ul>
+                    <span class="correct" v-if="question.answer == answers[index]">正解です！！ ⭕️（{{ question.answers[question.answer] }}）</span>
+                    <span class="incorrect" v-else>不正解 ❌<br>正解は「{{ question.answers[question.answer] }}」でした。</span>
+                    <h5>＜解説等＞</h5>
+                    <h5 class="explanation">{{question.explanation}}</h5>
+                    <h5 class="explanation2">{{question.explanation2}}</h5>
+                    <hr>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.min.js"></script>
+<script>
+
+    new Vue({
+        el: '#app',
+        data: {
+            answers: [],
+            questionIndex: 0,
+            questions: [
+                {
+                    question: '(問1)ソクラテスの「無知の知」に達するための方法は？',
+                    answers: [
+                        '問題法',
+                        '問答法',
+                        '質問法',
+                        'わからない',
+                    ],
+                    answer: 1,
+                    explanation: 'ソクラテスの母パイナレテが産婆だったことから「産婆術（助産術）」とも言われます。',
+                    explanation2: 'あ'
+                },
+                {
+                    question: '(問2)チェコ出身で、人間そのものに焦点を当てた「直観教授」と呼ばれる教授法を用いたのは誰？',
+                    answers: [
+                        'ヨハネス・アモス・コメニウス',
+                        'ジャン・ジャック・ルソー',
+                        'ヨハン・フリードリヒ・ヘルバルト',
+                        'わからない',
+                    ],
+                    answer: 0,
+                    explanation: 'コメニウスの著書『大教授学』で子供の直観を重視する教授法として紹介されています。',
+                    explanation2: 'あ'
+                },
+                {
+                    question: '(問3)ルソーが著書『エミール』で主張した教育は？',
+                    answers: [
+                        '自然主義',
+                        '経験主義',
+                        '系統主義',
+                        'わからない',
+                    ],
+                    answer: 0,
+                    explanation: '教師が積極的に教授せず子供の感性を重視するという意味で、消極教育とも言われます。'
+                },
+                {
+                    question: '(問4)ペスタロッチの開発教授の対義語となる考え方は？',
+                    answers: [
+                        '自然主義',
+                        '経験主義',
+                        '注入主義',
+                        'わからない',
+                    ],
+                    answer: 2,
+                    explanation: '一方的に知識を詰め込む注入主義に対して開発教授は知的能力、技術的能力、道徳的能力の調和を目指しています。'
+                },
+                {
+                    question: '(問5)デューイの児童中心主義が元となってできた教育方法は？',
+                    answers: [
+                        '四段階教授法',
+                        '発見学習',
+                        '問題解決学習',
+                        'わからない',
+                    ],
+                    answer: 2,
+                    explanation: '子供の生活上の課題が注目され、それを解決するプロセスが問題解決学習です。\nあああ\n'
+                }
+            ]
+        },
+        methods: {
+            addAnswer: function(index) {
+
+                this.answers.push(index);
+
+                if(!this.completed) {
+
+                    this.questionIndex++;
+
+
+                }
+              }
+
+
+
+
+
+
+
+
+
+        },
+        computed: {
+            currentQuestion: function() {
+
+                return this.questions[this.questionIndex];
+
+            },
+            completed: function() {
+
+                return (this.questions.length == this.answers.length);
+
+            }
+        }
+    })
+
+</script>
+
+<!---クイズ--->
+
+
+
+
+    <footer>
+      <div class="container">
+        <h2 class="footer-logo">教職教養BASIC</h2>
+        <div class="follow-us">
+
+          <a href="https://twitter.com/Th2lwbFLVrm6LdZ" class="social-icon" target='_blank'>
+            <span class="fa fa-twitter"></span>
+          </a>
+        </div>
+        <div class="copyright">©2019-
+          Kyouikugakubusei
+        </div>
+      </div>
+    </footer>
+
+    <script type="text/javascript" src="../../script.js"></script>
+  </body>
+</html>
