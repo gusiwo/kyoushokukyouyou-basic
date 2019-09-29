@@ -50,7 +50,7 @@ h3:before, h3:after{
 }
 
 .container {
-  width: 1170px;
+  width: 100%;
   padding-right: 15px;
   padding-left: 15px;
   margin-right: auto;
@@ -66,7 +66,7 @@ h3:before, h3:after{
 
 .section-title h3 {
   margin: 10px 0;
-  font-size: 32px;
+  font-size: 60px;
   font-weight: 300;
   line-height: 36px;
 }
@@ -79,7 +79,7 @@ h3:before, h3:after{
 
 /*-------  ここからheader  --------*/
 header {
-  height: 50px;
+  height: 120px;
   position: fixed;
   top: 0;
   left: 0;
@@ -97,9 +97,10 @@ header {
 .header-logo {
   color: #fff;
   font-weight: 700;
-  font-size: 22px;
+  font-size: 60px;
   font-family: 'Dosis', sans-serif;
   cursor: pointer;
+  padding: 20px 0 0 10px;
 }
 
 .header-menu-right {
@@ -115,8 +116,12 @@ header {
   font-weight: 700;
   padding: 10px;
   text-decoration: none;
+  font-size: 40px;
 }
 
+.header-menu {
+padding: 20px 0 0 0;
+}
 .header-menu-right a:hover {
   color: #5983ff;
   transition: color .3s;
@@ -198,7 +203,7 @@ header {
   text-align: center;
   background-image: url("https://www.pakutaso.com/shared/img/thumb/AME_3J0A2466_TP_V.jpg");
   background-size: cover;
-  height:600px;
+  height:700px;
 }
 
 .top-inner {
@@ -219,16 +224,16 @@ header {
 .top-section h2 {
   font-family: 'Dosis', sans-serif;
   color: #d0d0d0;
-  font-size: 48px;
-  line-height: 54px;
+  font-size: 120px;
+  line-height: 130px;
   margin: 10px 0 30px 0;
   font-weight: 400;
 }
 
 .top-description p {
   color: #bababa;
-  font-size: 18px;
-  line-height: 30px;
+  font-size: 50px;
+  line-height: 50px;
 }
 
 .top-section .top-button {
@@ -256,7 +261,7 @@ header {
 }
 
 #stamps > .container {
-  width: 936px;
+  width: 100%;
 }
 
 .stamp-box {
@@ -265,10 +270,17 @@ header {
   margin-bottom: 80px;
   height:　500px;
 }
+.stamp-box h4 {
+  font-size: 60px;
+  position: absolute;
+  top: 60%;
+  width: 100%;
+  font-weight: bold;
+}
 
 .stamp-image {
-  width: 200px;
-  height: 300px;
+  width: 50%;
+  height: 50%;
   margin: 10px 0;
   padding: 0px;
 }
@@ -310,7 +322,8 @@ header {
 
 .lesson {
   float: left;
-  width: 25%;
+  width: 50%;
+  margin-top: 20px;
 }
 
 .lesson-icon {
@@ -319,59 +332,63 @@ header {
 
 .text {
   width: 80%;
-  color: #b3aeb5;
-  font-size: 13px;
+  color: black;
+  font-size: 30px;
   margin-top: 15px;
   display: inline-block;
 }
 
 /*カテゴリ*/
 .category-icon {
-  height: 200px;
-  width:  200px;
+  height: 70%;
+  width:  70%;
 }
 .lesson-icon p {
   position: absolute;
-  top: 44%;
+  top: 35%;
   width: 100%;
-  color: white;
+  color: gray;
+  font-size: 50px;
+  font-weight: bold;
 }
 
 
 /* 記事一覧のarticle */
 #content_main {
-  width: 700px;
+  width: 100%;
   margin: auto;
   border: solid 1px;
 }
 #content_main .article {
-	height: 150px;
+	height: 250px;
 	margin-top: 20px;
   border-top: solid 1px;
-  width: 650px;
+  width: px;
   margin: auto;
 }
 
 /* 記事一覧のfigure */
 #content_main .article figure {
 	float: left;
-	height: 150px;
-	width: 150px;
+	height: 250px;
+	width: 250px;
 	margin: 0;
 }
 
 /* 記事一覧のimg */
 #content_main .article figure img {
 	border-radius: 5px;
-	height: 150px;
-	width: 150px;
+	height: 250px;
+	width: 250px;
+
 }
 
 /* 記事一覧の詳細部分 */
 .article-info {
 	display: inline-block;
-	float: right;
-	width: 500px;
+	float: left;
+  padding: 30px 0 0 50px;
+	width: 600px;
 }
 
 /* 記事一覧のタイトル */
@@ -387,7 +404,7 @@ header {
 /* 記事冒頭の紹介文 */
 .article-info p {
 	color: #8B8B8B;
-  font-size: 20px;
+  font-size: 40px;
 }
 /*-------  ここまでinterview  --------*/
 
@@ -434,32 +451,33 @@ textarea {
 .contact-form {
   display: inline-block;
   vertical-align: top;
-  width: 58%;
+  width: 100%;
+
 }
 
 .btn-contact {
   font-family: 'Dosis', sans-serif;
-  font-size: 18px;
-  font-weight: 600;
+  font-size: 40px;
+  font-weight: 600px;
   background: #5983ff;
   border: 1px solid #5979ff;
   color: white;
   box-shadow: inset 0 1px 0 #5867ed;
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
   transition: all .3s;
-  margin: 10px 0;
+  margin: 30px;
   padding: 15px 35px;
 }
 
 .contact-about {
   display: inline-block;
   vertical-align: top;
-  width: 40%;
+  width: 100%;
 }
 
 .contact-about i {
   padding-right: 15px;
-  font-size: 18px;
+  font-size: 30px;
 }
 
 .contact-about p {
@@ -483,6 +501,7 @@ footer {
 
 .footer-logo{
   display:inline-block;
+  font-size: 60px;
 }
 
 .social-icon {
@@ -490,12 +509,12 @@ footer {
   text-align: center;
   display: inline-block;
   background: rgba(94, 144, 255, 0.75);
-  width: 52px;
-  height: 52px;
+  width: 80px;
+  height: 80px;
   padding-top: 13px;
   border-radius: 50%;
   color: #e3e3e3;
-  font-size: 24px;
+  font-size: 40px;
   margin: 0 15px;
 }
 
@@ -505,27 +524,53 @@ footer {
 }
 
 .copyright {
-  margin-top: 20px;
+  margin-top: 40px;
+  font-size: 20px;
 }
 /*-------  ここまでfooter  --------*/
 
 .offset-3 {
-  padding-left: 50px;
+  width: 90%;
+  padding-left: 20px;
+  margin: 100px 0 100px 0;
+}
+.badge, .card-title{
+  font-size: 50px;
+  margin-left: 30px;
 }
 
+.btn-block {
+  font-size: 60px;
+}
 
 /*---------　ここからQUIZ  --------*/
 .incorrect {
   color: blue;
-  font-size: 30px;
+  font-size: 60px;
 }
 
 .correct {
   color: red;
-  font-size: 30px;
+  font-size: 60px;
 }
 
 .explanation {
   background-color: rgba(0, 0, 255, 0.1);
+  font-size: 50px;
+  border: solid 2px;
+  padding: 30px;
+  margin-bottom: 100px;
 }
 
+
+/*　　モバイル向けレイアウト　　*/
+@media (max-width: 670px) {
+  .container {
+    width: 670px;
+  }
+
+  .lesson {
+      width: 100%;
+    }
+
+}
